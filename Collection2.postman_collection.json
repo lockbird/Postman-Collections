@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "7f0e019a-d84f-40a9-be93-ff669cb8d438",
+		"name": "Test new collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20852285"
+	},
+	"item": [
+		{
+			"name": "Wildberries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.wildberries.ru/catalog/0/search.aspx?page=4&sort=priceup&search=кружка&fcolor=0&f16685=24411&f58813=65817&f16701=24428",
+					"protocol": "https",
+					"host": [
+						"www",
+						"wildberries",
+						"ru"
+					],
+					"path": [
+						"catalog",
+						"0",
+						"search.aspx"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "4"
+						},
+						{
+							"key": "sort",
+							"value": "priceup"
+						},
+						{
+							"key": "search",
+							"value": "кружка"
+						},
+						{
+							"key": "fcolor",
+							"value": "0"
+						},
+						{
+							"key": "f16685",
+							"value": "24411"
+						},
+						{
+							"key": "f58813",
+							"value": "65817"
+						},
+						{
+							"key": "f16701",
+							"value": "24428"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ozon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.ozon.ru/category/dom-i-sad-14500/?country=2&from_global=true&isdiscount=t&price=1793.000%3B5254.000&rating=t&text=кухонные+полотенца",
+					"protocol": "https",
+					"host": [
+						"www",
+						"ozon",
+						"ru"
+					],
+					"path": [
+						"category",
+						"dom-i-sad-14500",
+						""
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "2"
+						},
+						{
+							"key": "from_global",
+							"value": "true"
+						},
+						{
+							"key": "isdiscount",
+							"value": "t"
+						},
+						{
+							"key": "price",
+							"value": "1793.000%3B5254.000"
+						},
+						{
+							"key": "rating",
+							"value": "t"
+						},
+						{
+							"key": "text",
+							"value": "кухонные+полотенца"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"dmc4_dante@mail.ru\",\r\n  \"name\": \"Artem1996\",\r\n  \"password\": \"QWErty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}tasks/rest/doregister",
+					"host": [
+						"{{URL}}tasks"
+					],
+					"path": [
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateTask",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"task_title\": \"Интервью\",\r\n    \"task_description\": \"Шаги к прохождению интервью\",\r\n    \"email_owner\": \"dmc4_dante@mail.ru\",\r\n    \"email_assign\": \"egor@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}tasks/rest/createtask",
+					"host": [
+						"{{URL}}tasks"
+					],
+					"path": [
+						"rest",
+						"createtask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTask",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"task_id\": \"41\",\r\n    \"task_title\": \"Интервью\",\r\n    \"task_description\": \"Шаги к прохождению интервью\",\r\n    \"email_owner\": \"dmc4_Dante@mail.ru\",\r\n    \"email_assign\": \"egor@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}tasks/rest/deletetask",
+					"host": [
+						"{{URL}}tasks"
+					],
+					"path": [
+						"rest",
+						"deletetask"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://users.bugred.ru/"
+		}
+	]
+}
